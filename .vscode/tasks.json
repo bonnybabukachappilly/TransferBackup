@@ -1,0 +1,27 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "remove build",
+            "type": "shell",
+            "command": "rm -rf ./build"
+        },
+        {
+            "label": "remove dist",
+            "type": "shell",
+            "command": "rm -rf ./dist"
+        },
+        {
+            "label": "create build",
+            "type": "shell",
+            "command": "python3 setup.py bdist_wheel sdist"
+        },
+        {
+            "label": "upload build",
+            "type": "shell",
+            "command": "twine upload -r TransferBackup dist/*"
+        }
+    ]
+}

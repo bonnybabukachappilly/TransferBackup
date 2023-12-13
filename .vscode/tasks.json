@@ -6,22 +6,36 @@
         {
             "label": "remove build",
             "type": "shell",
-            "command": "rm -rf ./build"
+            "command": "rm -rf ./build",
+            "problemMatcher": []
         },
         {
             "label": "remove dist",
             "type": "shell",
-            "command": "rm -rf ./dist"
+            "command": "rm -rf ./dist",
+            "problemMatcher": []
         },
         {
             "label": "create build",
             "type": "shell",
-            "command": "python3 setup.py bdist_wheel sdist"
+            "command": "python3 setup.py bdist_wheel sdist",
+            "problemMatcher": []
         },
         {
             "label": "upload build",
             "type": "shell",
-            "command": "twine upload -r TransferBackup dist/*"
-        }
+            "command": "twine upload -r TransferBackup dist/*",
+            "problemMatcher": []
+        },
+        {
+            "label": "PYPI",
+            "dependsOn": [
+                "remove build",
+                "remove dist",
+                "create build",
+                "upload build",
+            ],
+            "dependsOrder": "sequence"
+        },
     ]
 }
